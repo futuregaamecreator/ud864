@@ -1,0 +1,444 @@
+<!-- This is the corresponding "starter code" for 07_Markers/Infowindows in Udacity and Google's Maps
+API Course, Lesson 1 -->
+<html>
+ <head>
+ <!-- styles put here, but you can include a CSS file and reference it instead! -->
+   <style type="text/css">
+     html, body { height: 100%; margin: 0; padding: 0; }
+     #map { height: 100%; }
+   </style>
+ </head>
+ <body>
+   <div id="map"></div>
+   <script type="text/javascript">
+     // Create a map variable
+     var map;
+     // Function to initialize the map within the map div
+     function initMap() {
+       [
+     {
+         "featureType": "all",
+         "elementType": "all",
+         "stylers": [
+             {
+                 "visibility": "on"
+             }
+         ]
+     },
+     {
+         "featureType": "all",
+         "elementType": "labels",
+         "stylers": [
+             {
+                 "visibility": "off"
+             },
+             {
+                 "saturation": "-100"
+             }
+         ]
+     },
+     {
+         "featureType": "all",
+         "elementType": "labels.text.fill",
+         "stylers": [
+             {
+                 "saturation": 36
+             },
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 40
+             },
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "all",
+         "elementType": "labels.text.stroke",
+         "stylers": [
+             {
+                 "visibility": "off"
+             },
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 16
+             }
+         ]
+     },
+     {
+         "featureType": "all",
+         "elementType": "labels.icon",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "administrative",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 20
+             }
+         ]
+     },
+     {
+         "featureType": "administrative",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 17
+             },
+             {
+                 "weight": 1.2
+             }
+         ]
+     },
+     {
+         "featureType": "landscape",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 20
+             }
+         ]
+     },
+     {
+         "featureType": "landscape",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#4d6059"
+             }
+         ]
+     },
+     {
+         "featureType": "landscape",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#4d6059"
+             }
+         ]
+     },
+     {
+         "featureType": "landscape.natural",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#4d6059"
+             }
+         ]
+     },
+     {
+         "featureType": "poi",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "lightness": 21
+             }
+         ]
+     },
+     {
+         "featureType": "poi",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#4d6059"
+             }
+         ]
+     },
+     {
+         "featureType": "poi",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#4d6059"
+             }
+         ]
+     },
+     {
+         "featureType": "road",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "visibility": "on"
+             },
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "road",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "road.highway",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#f0052f"
+             },
+             {
+                 "lightness": 17
+             },
+             {
+                 "visibility": "on"
+             }
+         ]
+     },
+     {
+         "featureType": "road.highway",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#3820d7"
+             },
+             {
+                 "lightness": 29
+             },
+             {
+                 "weight": 0.2
+             }
+         ]
+     },
+     {
+         "featureType": "road.arterial",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 18
+             }
+         ]
+     },
+     {
+         "featureType": "road.arterial",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "road.arterial",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "road.local",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 16
+             }
+         ]
+     },
+     {
+         "featureType": "road.local",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "road.local",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#7f8d89"
+             }
+         ]
+     },
+     {
+         "featureType": "transit",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "color": "#000000"
+             },
+             {
+                 "lightness": 19
+             },
+             {
+                 "visibility": "on"
+             }
+         ]
+     },
+     {
+         "featureType": "transit.line",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "visibility": "on"
+             }
+         ]
+     },
+     {
+         "featureType": "transit.line",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#303036"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "all",
+         "stylers": [
+             {
+                 "color": "#2b3638"
+             },
+             {
+                 "visibility": "on"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "geometry",
+         "stylers": [
+             {
+                 "color": "#2b3638"
+             },
+             {
+                 "lightness": 17
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "geometry.fill",
+         "stylers": [
+             {
+                 "color": "#24282b"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "geometry.stroke",
+         "stylers": [
+             {
+                 "color": "#24282b"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "labels",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "labels.text",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "labels.text.fill",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "labels.text.stroke",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     },
+     {
+         "featureType": "water",
+         "elementType": "labels.icon",
+         "stylers": [
+             {
+                 "visibility": "off"
+             }
+         ]
+     }
+ ]
+       map = new google.maps.Map(document.getElementById('map'), {
+         center: { lat: 33.875944, lng: -84.255562 },
+         zoom: 14
+       });
+       // Create a single latLng literal object.
+       var singleLatLng = { lat: 33.875944, lng: -84.255562 };
+       // TODO: Create a single marker appearing on initialize -
+       // Create it with the position of the singleLatLng,
+       // on the map, and give it your own title!
+       var contentString = 'lat: 33.875944, lng: -84.255562';
+       var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+       var marker = new google.maps.Marker({
+         position: singleLatLng,
+         map: map,
+         title: 'Home'
+        });
+
+       // TODO: create a single infowindow, with your own content.
+       // It must appear on the marker
+
+
+       // TODO: create an EVENT LISTENER so that the infowindow opens when
+       // the marker is clicked!
+       marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+
+   </script>
+   <!--TODO: Insert your API Key in the below call to load the API.-->
+   <script async defer
+     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDR10ATmHkxCj8dlck1o1anIBhaq8-s_mk&callback=initMap">
+   </script>
+ </body>
+</html>
